@@ -1,7 +1,8 @@
 import React, { useRef, useState } from "react"
 import { Form, Button, Card, Alert } from "react-bootstrap"
 import { useAuth } from "../contexts/AuthContext"
-import { Link, useHistory } from "react-router-dom"
+import { ToastContainer, toast } from "react-toastify";
+import { Link, useHistory } from "react-router-dom" 
 
 export default function Login() {
   const emailRef = useRef()
@@ -19,6 +20,7 @@ export default function Login() {
       setLoading(true)
       await login(emailRef.current.value, passwordRef.current.value)
       history.push("/")
+      toast.success(`Hi ! You have successfully Logged In`);
     } catch {
       setError("Failed to log in")
     }
